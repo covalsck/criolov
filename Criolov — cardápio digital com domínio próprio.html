@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Criolov — cardápio digital com domínio próprio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F4FB;--surface:#fff;--ink:#1B1235;--muted:#5d5575;--acai:#5B2A86;--acai-ink:#fff;--mango:#FFB020;--line:#ddd6ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150F26;--surface:#201737;--ink:#F2EEFB;--muted:#b3a9cc;--acai:#B58AE8;--acai-ink:#150F26;--line:#3a2e5c}}
+:root[data-theme="dark"]{--bg:#150F26;--surface:#201737;--ink:#F2EEFB;--muted:#b3a9cc;--acai:#B58AE8;--acai-ink:#150F26;--line:#3a2e5c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:800 26px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.03em}
+.logo i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--mango);margin-left:3px}
+nav a{margin-left:20px;text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:14px 24px;border-radius:999px;background:var(--acai);color:var(--acai-ink);font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:16px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--mango);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:36px 0 80px}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
+.hero p{max-width:34em;color:var(--muted);font-size:19px;margin:22px 0 30px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.phone{justify-self:center;width:270px;border-radius:38px;border:9px solid var(--ink);background:var(--surface);padding:18px 14px;box-shadow:14px 14px 0 var(--mango);transform:rotate(2.5deg)}
+.phone .url{font-size:12px;color:var(--muted);text-align:center;background:var(--bg);border-radius:99px;padding:5px;margin-bottom:12px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.item b{display:block;font-weight:600}.item span{color:var(--muted);font-size:12px}
+.item em{font-style:normal;font-weight:600}
+.bag{margin-top:12px;background:var(--acai);color:var(--acai-ink);border-radius:14px;padding:11px 14px;display:flex;justify-content:space-between;font-weight:600;font-size:14px}
+.pts{margin-top:10px;font-size:12px;color:var(--muted);text-align:center}
+.pts i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--mango);margin:0 2px}
+.pts i.o{background:var(--line)}
+section{padding:70px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(30px,4.4vw,48px);max-width:16em}
+.lead{color:var(--muted);max-width:36em;margin:14px 0 0}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:40px}
+.feat h3{font-size:22px;margin-bottom:8px}.feat p{margin:0;color:var(--muted)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;align-items:stretch}
+.plan{background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:30px 26px;display:flex;flex-direction:column}
+.plan.pop{border-color:var(--acai);border-width:2.5px;box-shadow:8px 8px 0 var(--mango)}
+.plan h3{font-size:28px}
+.tag{font-size:13px;font-weight:600;color:var(--acai);margin:4px 0 0;min-height:20px}
+.price{font:800 40px "Bricolage Grotesque",sans-serif;margin:18px 0 0;letter-spacing:-.03em}
+.price small{font:500 15px Figtree,sans-serif;color:var(--muted);letter-spacing:0}
+.mo{color:var(--muted);margin:2px 0 20px;font-size:15px}
+.plan ul{list-style:none;padding:0;margin:0 0 26px;flex:1}
+.plan li{padding:8px 0 8px 26px;position:relative;font-size:15.5px;border-top:1px solid var(--line)}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--acai);font-weight:700}
+.plan li.no{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.plan li.no::before{content:"–";color:var(--muted)}
+.plan li.up{font-weight:600}
+.plan .btn{text-align:center}
+.note{margin-top:22px;color:var(--muted);font-size:15px}
+.work{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;margin-top:40px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:32px}
+.work h3{font-size:30px}.work p{color:var(--muted);margin:12px 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1.5px solid var(--line);border-radius:99px;padding:5px 14px;font-size:14px}
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.site{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none}.site .bar{padding:9px 14px;font-size:13px;color:var(--muted);border-bottom:1.5px solid var(--line);display:flex;gap:6px;align-items:center}.site .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}.site .bar span{margin-left:8px}.site .shot{padding:44px 20px;background:var(--acai);color:var(--acai-ink);font:800 26px "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;line-height:1.1;min-height:130px;display:flex;align-items:flex-end}.site:nth-child(2) .shot{background:var(--mango);color:#1B1235}.site:nth-child(3) .shot{background:var(--ink);color:var(--bg)}.site .info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}.site .shot{position:relative;overflow:hidden;height:76px;min-height:0;padding:0;font-size:19px}.site .shot span{position:absolute;left:14px;bottom:12px;right:14px}.site .info b{display:inline-block;align-self:flex-start;margin-top:6px;padding:7px 14px;font-size:14px;border-radius:99px;background:var(--acai);color:var(--acai-ink)}.site:hover .info b{filter:brightness(1.12)}.site:focus-visible{outline:3px solid var(--mango);outline-offset:3px}.site .info p{margin:0;color:var(--muted);font-size:14px;line-height:1.45;flex:1}.site .info b{font-weight:600;color:var(--acai)}.site:hover{border-color:var(--acai)}@media(max-width:860px){.sites{grid-template-columns:1fr}}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;counter-reset:s}
+.steps div{counter-increment:s;border-left:3px solid var(--mango);padding-left:16px}
+.steps div::before{content:counter(s);font:800 30px "Bricolage Grotesque",sans-serif;color:var(--acai)}
+.steps h3{font-size:19px;margin:2px 0 6px}.steps p{margin:0;color:var(--muted);font-size:15px}
+.final{text-align:center}.final h2{margin:0 auto}.final .lead{margin:14px auto 28px}
+footer{padding:30px 0 50px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:860px){.hero,.work{grid-template-columns:1fr}.feat,.plans,.steps{grid-template-columns:1fr 1fr}.phone{transform:none}nav a:not(.btn){display:none}}
+@media(max-width:600px){.feat,.plans,.steps{grid-template-columns:1fr}.wrap{padding:0 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="logo" href="#">criolov<i></i></a>
+<nav><a href="#planos">Planos</a><a href="#portfolio">Portfólio</a><a href="#como">Como funciona</a><a class="btn" href="#contato" style="margin-left:20px;padding:10px 20px;color:var(--acai-ink)">Pedir orçamento</a></nav>
+</header>
+
+<div class="hero">
+<div>
+<h1>Seu cardápio digital, no seu próprio endereço.</h1>
+<p>Criamos o site do seu restaurante, lanchonete ou delivery com domínio próprio, pedidos online e programa de fidelidade. Seu cliente pede direto com você, sem comissão de aplicativo.</p>
+<div class="cta"><a class="btn" href="#planos">Ver planos</a><a class="btn ghost" href="#portfolio">Ver sites prontos</a></div>
+</div>
+<div class="phone" aria-hidden="true">
+<div class="url">seurestaurante.com.br</div>
+<div class="item"><div><b>X-Carne de sol</b><span>Pão, queijo coalho, vinagrete</span></div><em>R$ 24</em></div>
+<div class="item"><div><b>Baião de dois</b><span>Serve uma pessoa</span></div><em>R$ 28</em></div>
+<div class="item"><div><b>Suco de cajá</b><span>500 ml</span></div><em>R$ 9</em></div>
+<div class="bag"><span>Sacola · 2 itens</span><span>R$ 52</span></div>
+<div class="pts">Faltam 2 pedidos para o brinde <br><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i></div>
+</div>
+</div>
+</div>
+
+<section>
+<div class="wrap">
+<h2>Tudo o que seu cardápio precisa para vender</h2>
+<div class="feat">
+<div><h3>Domínio próprio</h3><p>Seu cliente digita o nome do seu negócio, não o de uma plataforma. Fica fácil de achar e de divulgar.</p></div>
+<div><h3>Pedidos com checkout</h3><p>O cliente monta a sacola, informa endereço e forma de pagamento, e você recebe o pedido organizado.</p></div>
+<div><h3>Fidelidade</h3><p>Pontos e recompensas fazem o cliente voltar. Você escolhe quanto vale cada pedido.</p></div>
+</div>
+</div>
+</section>
+
+<section id="planos">
+<div class="wrap">
+<h2>Três planos. Cada um entrega mais que o anterior.</h2>
+<p class="lead">Você paga a criação uma vez e uma mensalidade pequena para manter o site no ar, atualizado e com suporte.</p>
+<div class="plans">
+
+<div class="plan">
+<h3>Básico</h3><p class="tag">Para ter presença online</p>
+<div class="price"><small>a partir de </small>R$ 650</div>
+<p class="mo">+ R$ 200/mês de manutenção</p>
+<ul>
+<li>Cardápio digital completo</li>
+<li>Domínio próprio</li>
+<li>Botão de pedido pelo WhatsApp</li>
+<li>Layout com a sua marca</li>
+<li>Atualização de preços e itens</li>
+<li class="no">Checkout de clientes</li>
+<li class="no">Programa de fidelidade</li>
+</ul>
+<a class="btn ghost" href="#contato" data-plano="Básico">Quero o Básico</a>
+</div>
+
+<div class="plan pop">
+<h3>Premium</h3><p class="tag">O mais escolhido</p>
+<div class="price">R$ 1.000</div>
+<p class="mo">+ R$ 280/mês de manutenção</p>
+<ul>
+<li class="up">Tudo do Básico</li>
+<li class="up">Checkout de clientes</li>
+<li>Sacola de compras e cadastro do cliente</li>
+<li>Pedido com endereço e pagamento</li>
+<li>Cartão fidelidade simples</li>
+<li>Pedidos organizados para você</li>
+<li class="no">Painel com relatórios</li>
+</ul>
+<a class="btn" href="#contato" data-plano="Premium">Quero o Premium</a>
+</div>
+
+<div class="plan">
+<h3>Ultra</h3><p class="tag">Para quem quer crescer</p>
+<div class="price">Sob consulta</div>
+<p class="mo">mensalidade conforme o projeto</p>
+<ul>
+<li class="up">Tudo do Premium</li>
+<li class="up">Fidelidade completa com pontos e resgate</li>
+<li>Cupons de desconto e promoções</li>
+<li>Painel com pedidos e relatórios de vendas</li>
+<li>Mais de uma unidade ou cardápio</li>
+<li>Recursos personalizados para o seu negócio</li>
+<li>Suporte prioritário</li>
+</ul>
+<a class="btn ghost" href="#contato" data-plano="Ultra">Falar sobre o Ultra</a>
+</div>
+
+</div>
+<p class="note">O Básico começa em R$ 650 e o valor final depende do tamanho do cardápio. A mensalidade cobre ajustes e suporte. O domínio é cobrado à parte e o valor varia conforme o endereço escolhido.</p>
+</div>
+</section>
+
+<section id="portfolio">
+<div class="wrap">
+<h2>Sites criados pela Criolov</h2>
+<p class="lead">Toque em um dos sites para abrir e ver como ele funciona.</p>
+<div class="sites">
+<a class="site" href="https://temperodonordeste.app" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i><span>temperodonordeste.app</span></div><div class="shot"><span>Tempero do Nordeste</span></div><div class="info"><p>Cardápio online de um restaurante em Arapiraca (AL), com pedidos, sacola e pontos de fidelidade.</p><b>Abrir o site</b></div></a>
+<a class="site" href="https://catalogomastermidiainformatica.app" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i><span>catalogomastermidiainformatica.app</span></div><div class="shot"><span>Catálogo Master Mídia Informática</span></div><div class="info"><p>Catálogo online da Master Mídia Informática.</p><b>Abrir o site</b></div></a>
+<a class="site" href="https://sincromed.app" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i><span>sincromed.app</span></div><div class="shot"><span>Sincromed</span></div><div class="info"><p>Site criado pela Criolov.</p><b>Abrir o site</b></div></a>
+</div>
+</div>
+</section>
+
+<section id="como">
+<div class="wrap">
+<h2>Do pedido ao site no ar</h2>
+<div class="steps">
+<div><h3>Conversa</h3><p>Você conta sobre o negócio e escolhe o plano.</p></div>
+<div><h3>Cardápio</h3><p>Você envia itens, preços e fotos. Nós montamos tudo.</p></div>
+<div><h3>Aprovação</h3><p>Você revisa o site e pede os ajustes.</p></div>
+<div><h3>No ar</h3><p>Publicamos no seu domínio e cuidamos da manutenção.</p></div>
+</div>
+</div>
+</section>
+
+<section id="contato" class="final">
+<div class="wrap">
+<h2>Vamos colocar seu cardápio no ar?</h2>
+<p class="lead" id="msg">Chame no WhatsApp, conte o que você vende e receba um orçamento.</p>
+<a class="btn" id="wa" href="#">Chamar no WhatsApp</a>
+</div>
+</section>
+
+<footer><div class="wrap"><span>© Criolov</span><span>Cardápios digitais com domínio próprio</span></div></footer>
+
+<script>
+const WHATSAPP = "5582999281829";
+function link(plano){
+  const t = encodeURIComponent("Olá! Vi o site da Criolov e quero um orçamento" + (plano ? " do plano " + plano : "") + ".");
+  return "https://wa.me/" + WHATSAPP + "?text=" + t;
+}
+const wa = document.getElementById("wa");
+wa.href = link("");
+wa.target = "_blank"; wa.rel = "noopener";
+document.querySelectorAll("[data-plano]").forEach(function(a){
+  a.addEventListener("click", function(){ wa.href = link(a.dataset.plano); });
+});
+</script>
+</body>
+</html>
